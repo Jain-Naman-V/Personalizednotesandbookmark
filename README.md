@@ -81,7 +81,7 @@ For testing the application, use these demo credentials:
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 ├── app/                    # Next.js App Router
 │   ├── globals.css        # Global styles and animations
 │   ├── layout.tsx         # Root layout with providers
@@ -103,7 +103,7 @@ For testing the application, use these demo credentials:
 ├── contexts/             # React contexts
 │   └── auth-context.tsx  # Authentication state management
 └── README.md            # This file
-\`\`\`
+```
 
 ## 🎨 Styling Features
 
