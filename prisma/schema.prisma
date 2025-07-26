@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  password  String
+  firstName String
+  lastName  String
+  notes     Note[]
+  bookmarks Bookmark[]
+  createdAt DateTime   @default(now())
+}
+
+model Note {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  tags      NoteTag[]
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  favorite  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  subNotes  SubNote[]
+}
+
+model Bookmark {
+  id          String   @id @default(uuid())
+  url         String
+  title       String
+  description String?
+  tags        BookmarkTag[]
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  favorite    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Tag {
+  id        String       @id @default(uuid())
+  name      String       @unique
+  noteTags  NoteTag[]
+  bookmarkTags BookmarkTag[]
+}
+
+model NoteTag {
+  id      String @id @default(uuid())
+  note    Note   @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  noteId  String
+  tag     Tag    @relation(fields: [tagId], references: [id])
+  tagId   String
+}
+
+model BookmarkTag {
+  id         String    @id @default(uuid())
+  bookmark   Bookmark  @relation(fields: [bookmarkId], references: [id], onDelete: Cascade)
+  bookmarkId String
+  tag        Tag       @relation(fields: [tagId], references: [id])
+  tagId      String
+}
+
+model SubNote {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  note      Note     @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  noteId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 
