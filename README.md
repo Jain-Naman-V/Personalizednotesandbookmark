@@ -48,26 +48,26 @@ A beautiful, dynamic, and interactive web application for managing personal note
 ### Installation
 
 1. **Clone or download the project**
-   \`\`\`bash
-   # If using the v0 download feature, extract the files
+   ```bash
+   
    # If cloning from GitHub:
    git clone <repository-url>
    cd personal-notes-bookmark-manager
-   \`\`\`
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
+   ```bash
    npm install
    # or
    yarn install
-   \`\`\`
+   ```
 
 3. **Run the development server**
-   \`\`\`bash
+   ```bash
    npm run dev
    # or
    yarn dev
-   \`\`\`
+   ```
 
 4. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
@@ -205,5 +205,5 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Happy organizing!** 🎯✨
+**Happy Created by Naman With Love!** 🎯✨
 \`\`\`
